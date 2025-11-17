@@ -1,5 +1,4 @@
 import streamlit as st
-import yfinance as yf
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
@@ -7,6 +6,13 @@ from plotly.subplots import make_subplots
 from datetime import datetime, timedelta
 import warnings
 warnings.filterwarnings('ignore')
+
+# yfinance import kontrolü
+try:
+    import yfinance as yf
+except ImportError:
+    st.error("❌ yfinance kütüphanesi yüklü değil. Lütfen 'pip install yfinance' komutunu çalıştırın.")
+    st.stop()
 
 # Sayfa konfigürasyonu
 st.set_page_config(page_title="BIST Backtesting Aracı", layout="wide", initial_sidebar_state="expanded")
